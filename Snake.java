@@ -5,27 +5,28 @@ import java.util.LinkedList;
 public class Snake {
     
     private LinkedList<Point> snakeBody;
-    private int snakeX;
-    private int snakeY;
-    public Snake(int snakeX, int snakeY){
+    private int snakeCols; // x == cols
+    private int snakeRows; // y == rows
+    public Snake(int snakeCols, int snakeRows){
         snakeBody = new LinkedList<>();
-        snakeBody.addFirst(new Point(snakeX, snakeY));
-        this.snakeX = snakeX;
-        this.snakeY = snakeY;
+        snakeBody.addFirst(new Point(snakeCols, snakeRows));
+        //point(x,y) == point(cols,rows)
+        this.snakeCols = snakeCols;
+        this.snakeRows = snakeRows;
     }
 
     //setter and getter
-    public void setSnakeX(int snakeX){
-        this.snakeX = snakeX;
+    public void setSnakeCols(int snakeCols){
+        this.snakeCols = snakeCols;
     }
-    public int getSnakeX(){
-        return snakeX;
+    public int getSnakeCols(){
+        return snakeCols;
     }
-    public void setSnakeY(int snakeY){
-        this.snakeY = snakeY;
+    public void setSnakeRows(int snakeRows){
+        this.snakeRows = snakeRows;
     }
-    public int getSnakeY(){
-        return snakeY;
+    public int getSnakeRows(){
+        return snakeRows;
     }
     public LinkedList<Point> getSnakeBody(){
         return snakeBody;
@@ -35,43 +36,40 @@ public class Snake {
     }
 
     //function
-    public void addHead(int newX, int newY){
-        snakeX = newX;
-        snakeY = newY;
-        snakeBody.addFirst(new Point(newX, newY));
+    public void addHead(int newCols, int newRows){
+        snakeCols = newCols;
+        snakeRows = newRows;
+        snakeBody.addFirst(new Point(newCols, newRows));
     }
     public void removeTail(){
         snakeBody.removeLast();
     }
     public void move(char movementKey){
         Point head = snakeBody.getFirst();
-        int newX = head.x;
-        int newY = head.y;
+        int newCols = head.x;
+        int newRows = head.y;
         switch (movementKey){
-            case 'a' -> newX--;
-            case 'w' -> newY--;
-            case 'd' -> newX++;
-            case 's' -> newY++;
+            case 'a' -> newCols--;
+            case 'w' -> newRows--;
+            case 'd' -> newCols++;
+            case 's' -> newRows++;
         }
-        addHead(newX, newY);
+        addHead(newCols, newRows);
         removeTail();
     }
     public void grow(char movementKey){
         Point head = snakeBody.getFirst();
-        int newX = head.x;
-        int newY = head.y;
+        int newCols = head.x;
+        int newRows = head.y;
         switch (movementKey){
-            case 'a' -> newX--;
-            case 'w' -> newY--;
-            case 'd' -> newX++;
-            case 's' -> newY++;
+            case 'a' -> newCols--;
+            case 'w' -> newRows--;
+            case 'd' -> newCols++;
+            case 's' -> newRows++;
         }
-        addHead(newX, newY);  
+        addHead(newCols, newRows);  
     }
     
-    // public static void main(String[] args) {
-    //     Snake snake = new Snake(2, 0);
-    //     System.out.println(snake.getSnakeY());
-    // }
+    
 
 }

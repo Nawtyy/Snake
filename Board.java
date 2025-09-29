@@ -1,14 +1,20 @@
 import java.awt.Point;
 import java.util.LinkedList;
+
+
 public class Board {
+
+    
     private String[][] grid;
-    private int width;
-    private int height;
-    public Board(int height, int width) {
-        this.width = width;
-        this.height = height;
-        this.grid = new String[height][width];
-        fillGrid(grid);
+    private int cols;
+    private int rows;
+
+
+    public Board(int rows, int cols) {
+        this.cols = cols;
+        this.rows = rows;
+        this.grid = new String[rows][cols];
+        fillGrid();
     }
 
     //setter and getter  
@@ -18,59 +24,58 @@ public class Board {
     public void setGrid(String[][] grid) {
         this.grid = grid;
     }
-    public int getWidth(){
-        return width;
+    public int getcols(){
+        return cols;
     }
-    public int getHeight() {
-        return height;
+    public int getrows() {
+        return rows;
     }
-    public void setWidth(int width) {
-        this.width = width;
+    public void setcols(int cols) {
+        this.cols = cols;
     }
-    public void setHeight(int height) {
-        this.height = height;
+    public void setrows(int rows) {
+        this.rows = rows;
     }
 
 
     
-    private void fillGrid(String[][] grid) {
-        for(int i = 0; i < height; i++){
-            for (int j = 0; j < width; j++){
-                grid[i][j] = ". ";
+    private void fillGrid() {
+        for(int r = 0; r < rows; r++){
+            for (int c = 0; c < cols; c++){
+                grid[r][c] = ". ";
             }
         }
     }
     public void printBoard(){
-        for(int i = 0; i < height; i++){
-            for(int j = 0; j < width; j++){
-                System.out.print(grid[i][j]);
+        for(int r = 0; r < rows; r++){
+            for(int c = 0; c < cols; c++){
+                System.out.print(grid[r][c]);
             }
             System.out.println();
         }
-        fillGrid(grid);
+        fillGrid();
     }
 
-    public void setCell(int row, int col, String value) {
-        if (row >= 0 && row < height && col >= 0 && col < width) {
-            grid[col][row] = value;
+    public void setCell( int row, int col, String value) {
+        if (row >= 0 && row <= rows && col >= 0 && col <= cols) {
+            grid[row][col] = value;
         }
     }
 
     public boolean isSnakeHeadInBoard(LinkedList <Point> snakeBody){
-
-        Point p = snakeBody.getFirst();
-        return p.getX() < width && p.getY() < height && p.getY() >= 0 && p.getX() >= 0;
+        Point head = snakeBody.getFirst();
+        return head.y < rows && head.x < cols && head.x >= 0 && head.y >= 0;
     }
 
     public void printSnake(LinkedList <Point> snakeBody){
-        for(int i = 0; i < snakeBody.size(); i++){
-            Point p = snakeBody.get(i);
-            if(i == 0) setCell(p.x, p.y, "@ ");
-            else setCell(p.x, p.y, "0 ");
+        for(int snakePart = 0; snakePart < snakeBody.size(); snakePart++){
+            Point p = snakeBody.get(snakePart);
+            if(snakePart == 0) setCell(p.y, p.x, "@ ");
+            else setCell(p.y, p.x, "0 ");
         }
     }
     public void printFood(Food food){
-        setCell(food.getFood_x(), food.getFood_y(), "F ");
+        setCell(food.getfoodRows(), food.getfoodCols(), "F ");
     }
     
     

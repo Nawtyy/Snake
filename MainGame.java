@@ -33,10 +33,11 @@ public class MainGame {
                 System.out.println("Fail");
                 break;
             }
-            if(food.isEaten(snake.getSnakeX(), snake.getSnakeY())){
+            if(food.isEaten(snake.getSnakeCols(), snake.getSnakeRows())){
                 food.spawn(snake.getSnakeBody());
                 snake.grow(userInput);
                 board.printSnake(snake.getSnakeBody());
+                
             }
         }
         
