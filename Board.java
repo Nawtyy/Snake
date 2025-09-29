@@ -65,13 +65,15 @@ public class Board {
     public boolean isSnakeHeadInBoard(LinkedList <Point> snakeBody){
         Point head = snakeBody.getFirst();
         return head.y < rows && head.x < cols && head.x >= 0 && head.y >= 0;
+        //y == rows 
+        //x == cols
     }
 
     public void printSnake(LinkedList <Point> snakeBody){
         for(int snakePart = 0; snakePart < snakeBody.size(); snakePart++){
-            Point p = snakeBody.get(snakePart);
-            if(snakePart == 0) setCell(p.y, p.x, "@ ");
-            else setCell(p.y, p.x, "0 ");
+            Point part = snakeBody.get(snakePart);
+            if(snakePart == 0) setCell(part.y, part.x, "@ ");
+            else setCell(part.y, part.x, "0 ");
         }
     }
     public void printFood(Food food){

@@ -37,8 +37,6 @@ public class Snake {
 
     //function
     public void addHead(int newCols, int newRows){
-        snakeCols = newCols;
-        snakeRows = newRows;
         snakeBody.addFirst(new Point(newCols, newRows));
     }
     public void removeTail(){
@@ -48,6 +46,8 @@ public class Snake {
         Point head = snakeBody.getFirst();
         int newCols = head.x;
         int newRows = head.y;
+        snakeCols = newCols;
+        snakeRows = newRows;
         switch (movementKey){
             case 'a' -> newCols--;
             case 'w' -> newRows--;
@@ -56,11 +56,15 @@ public class Snake {
         }
         addHead(newCols, newRows);
         removeTail();
+        
     }
     public void grow(char movementKey){
         Point head = snakeBody.getFirst();
         int newCols = head.x;
         int newRows = head.y;
+        snakeCols = newCols;
+        snakeRows = newRows;
+
         switch (movementKey){
             case 'a' -> newCols--;
             case 'w' -> newRows--;

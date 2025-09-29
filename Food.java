@@ -6,13 +6,14 @@ public class Food {
     private Point position;
     private int foodCols;
     private int foodRows;
-    private Random rand;
+    private final Random rand;
 
-    public Food(int foodCols, int foodRows){
+    public Food(int foodRows, int foodCols){
         this.foodCols = foodCols;
         this.foodRows = foodRows;
         this.rand = new Random();
     }
+
     public int getfoodCols()
     {
         return foodCols;
@@ -32,16 +33,18 @@ public class Food {
     public Point getPosition(){
         return position;
     }
-    public boolean isEaten(int snakeCols, int snakeRows){
+
+    public boolean isEaten(int snakeRows, int snakeCols){
         return getfoodCols() == snakeCols && getfoodRows() == snakeRows;
     }
+
     public void spawn(LinkedList<Point> snakeBody) {
         while (true) {
-            int newCols = rand.nextInt(foodCols); // cols
-            int newRows = rand.nextInt(foodRows);  // rows
+            int newCols = rand.nextInt(foodCols) + 0; // cols
+            int newRows = rand.nextInt(foodRows) + 0;  // rows
             foodCols = newCols;
             foodRows = newRows;
-            Point newPositionFood = new Point(newCols, newRows);
+            Point newPositionFood = new Point(newRows, newCols);
 
             if (!snakeBody.contains(newPositionFood)) { 
                 position = newPositionFood;
