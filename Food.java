@@ -47,6 +47,7 @@ public class Food {
             }
         }
     }
+    //kjsndvjknsdjvnsjkdv
     // public static void main(String[] args) {
     //     Food food = new Food(1, 2);
     //     Snake snake = new Snake(1, 4);
