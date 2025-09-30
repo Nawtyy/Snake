@@ -38,10 +38,10 @@ public class Food {
         return getfoodCols() == snakeCols && getfoodRows() == snakeRows;
     }
 
-    public void spawn(LinkedList<Point> snakeBody) {
+    public void spawn(LinkedList<Point> snakeBody, Board board) {
         while (true) {
-            int newCols = rand.nextInt(foodCols) + 0; // cols
-            int newRows = rand.nextInt(foodRows) + 0;  // rows
+            int newCols = rand.nextInt(board.getcols()) + 0; // cols
+            int newRows = rand.nextInt(board.getrows()) + 0;  // rows
             foodCols = newCols;
             foodRows = newRows;
             Point newPositionFood = new Point(newRows, newCols);
