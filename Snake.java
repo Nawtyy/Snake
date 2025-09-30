@@ -73,6 +73,15 @@ public class Snake {
         }
         addHead(newCols, newRows);  
     }
+    public boolean EatingSelf(LinkedList <Point> snakeBody){
+        Point head = snakeBody.getFirst();
+        if(snakeBody.size() == 1) return false;
+        for(int part = 1; part < snakeBody.size(); part++){
+            Point body = snakeBody.get(part);
+            if(body.y == head.y && body.x == head.x) return true;
+        }
+        return false;
+    }
     
     
 
