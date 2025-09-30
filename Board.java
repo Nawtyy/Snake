@@ -64,7 +64,7 @@ public class Board {
 
     public boolean isSnakeHeadInBoard(LinkedList <Point> snakeBody){
         Point head = snakeBody.getFirst();
-        return head.y < rows && head.x < cols && head.x >= 0 && head.y >= 0;
+        return head.y <= rows && head.x <= cols && head.x >= 0 && head.y >= 0;
         //y == rows 
         //x == cols
     }
