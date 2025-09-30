@@ -33,12 +33,15 @@ public class MainGame {
                 System.out.println("Fail");
                 break;
             }
+            if(snake.EatingSelf(snake.getSnakeBody())){
+                System.out.println("Fail");
+                break;
+            }
             if(food.isEaten(snake.getSnakeRows(), snake.getSnakeCols())){
                 food.spawn(snake.getSnakeBody(), board);
                 snake.grow(userInput);
-                
             }
         }
-        
+        scanner.close();
     }
 }
